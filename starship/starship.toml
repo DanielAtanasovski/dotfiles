@@ -63,6 +63,7 @@ CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
+EndeavourOS = "󱓞 "
 
 [username]
 show_always = true
