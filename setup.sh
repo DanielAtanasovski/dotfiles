@@ -25,6 +25,12 @@ if [ ! -e "${HOME_DIR}/.config/kitty/kitty.conf" ]; then
   mkdir -p "${HOME_DIR}/.config/kitty"
   ln -s "${DOTFILES_DIR}/kitty/kitty.conf" "${HOME_DIR}/.config/kitty/kitty.conf"
   ln -s "${DOTFILES_DIR}/kitty/nord.conf" "${HOME_DIR}/.config/kitty/nord.conf"
+if [ ! -e "${HOME_DIR}/.wezterm.lua" ]; then
+  ln -s "${DOTFILES_DIR}/terminals/.wezterm.lua" "${HOME_DIR}/.wezterm.lua"
+fi
+
+if [ ! -e "${HOME_DIR}/.tmux.conf" ]; then
+  ln -s "${DOTFILES_DIR}/terminals/.tmux.conf" "${HOME_DIR}/.tmux.conf"
 fi
 
 # If MacOS, run install mac-install.sh

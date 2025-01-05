@@ -9,7 +9,15 @@ function refresh_git(){
         return
     fi
 
-    git checkout "$DEFAULT_BRANCH" && git pull && git branch -d "$(git branch | grep -v "$DEFAULT_BRANCH")"
+    git checkout "$DEFAULT_BRANCH" && git pull
+    
+    # Clear all local branches
+    for branch in $(git branch | grep -v "$DEFAULT_BRANCH"); do
+        git branch -D "$branch"
+    done
+
+    # Prune old local 'remote' branches
+    git remote prune origin
 }
 
 # Get all namespaces and the 'live' labels associated with them
@@ -58,7 +66,7 @@ function awslogin() {
 
     if [ "$?" -ne 0 ]; then
         echo "Refreshing AWS authentication"
-        aws sso login $@
+        aws sso login "$@"
 
         CREDENTIALS="$(aws configure export-credentials --format env)"
     fi

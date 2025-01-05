@@ -16,6 +16,8 @@ alias vault_login_prod_admin='vampire-squid login --cluster prod oidc --admin &&
 
 # Extra
 alias vim=nvim
+alias ls="eza --icons=always"
+alias cd="z"
 
 # Genero
 alias launch_genero='open -a /Applications/Genero\ Desktop\ Client\ 3.20.12-202003191410.app/Contents/MacOS/gdc --args -A0 -a -D -M'
