@@ -26,16 +26,17 @@ fi
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="~/go/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 # Add GNU sed to PATH
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export GITHUB_LOCAL_TOKEN=""
 
 # Source other files
-source "${ZSHRC_DIR}"/zsh-extra/functions.sh
-source "${ZSHRC_DIR}"/zsh-extra/oh-my-zsh.sh
-source "${ZSHRC_DIR}"/zsh-extra/alias.sh
-source "${ZSHRC_DIR}"/zsh-extra/starship.sh # This needs to be last
+source "$HOME/.config/zsh/functions.sh"
+source "$HOME/.config/zsh/oh-my-zsh.sh"
+source "$HOME/.config/zsh/alias.sh"
+source "$HOME/.config/zsh/starship.sh" # This needs to be last
 
 # pnpm
 export PNPM_HOME="/Users/atanad/Library/pnpm"

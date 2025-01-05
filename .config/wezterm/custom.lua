@@ -54,12 +54,13 @@ function custom_config.apply(config)
     -- TODO: This should be dynamic to the OS
     config.launch_menu = {
         -- Powershell
-        { label = "Powershell", args = { "powershell.exe", '-NoLogo' } },
+        -- { label = "Powershell", args = { "powershell.exe", '-NoLogo' } },
     }
 
     -- Behaviour
     -- TODO: This should be dynamic to the OS and also check what WSL distro is installed
-    config.default_prog = { "C:\\Windows\\system32\\wsl.exe", "-d", "Arch" }
+    -- config.default_prog = { "C:\\Windows\\system32\\wsl.exe", "-d", "Arch" }
+    config.default_prog = { "zsh" }
 
     config.window_decorations = "RESIZE"
     config.window_background_opacity = opacity
