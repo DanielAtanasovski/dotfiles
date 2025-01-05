@@ -1,0 +1,1 @@
+-- Handles the launch menu in wezterm (depending on the OS)
