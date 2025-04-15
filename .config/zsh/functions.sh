@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# VS-code insiders
+# Check if code-insiders is installed
+if command -v code-insiders &> /dev/null; then
+  alias code="code-insiders"
+fi
+
+# Define the code function
+function code() {
+  command code "$@"
+}
+
 ## Helpful functions ##
 
 function refresh_git(){
@@ -23,30 +34,6 @@ function refresh_git(){
 # Get all namespaces and the 'live' labels associated with them
 function get_live_label(){
     kubectl get ns -o json 2>/dev/null | jq -c '.items[] as $i | [$i.metadata.name, $i.metadata.labels.live]'
-}
-
-function kinstall(){
-    if [[ -z "${1}" ]] ; then
-        echo "ERROR: App name required, e.g. hammerhead"
-        return 1
-    fi
-
-    if [[ -z "${2}" ]] ; then
-        echo "ERROR: App version required, e.g. hammerhead"
-        return 1
-    fi
-
-    if [[ -z "${3}" ]] ; then
-        echo "ERROR: Namespace name required, e.g. hammerhead"
-        return 1
-    fi
-
-    echo "Install ${1}:${2} into namespace ${3}... Okay..."
-
-
-    # TODO: Check if files exist
-
-    helm install -n "${3}" -f ~/stash/kubernetes-configuration-files/global/"${3}".yml -f ~/stash/kubernetes-configuration-files/specific/"${2}"/default.yml -f ~/stash/kubernetes-configuration-files/specific/"${2}"/"${3}".yml "${1}" helm-internal/"${1}" --version v"$2"
 }
 
 function awslogin() {

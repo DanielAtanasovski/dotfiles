@@ -9,9 +9,9 @@ DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
 
 # Check for Homebrew and install if needed
 if command -v brew >/dev/null 2>&1; then
-  echo "\n1. Brew is installed!\n"
+  echo "\n####\n1. Brew is installed!\n####\n"
 else
-  echo "\n1. Installing Homebrew...\n"
+  echo "\n####\n1. Installing Homebrew...\n####\n"
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
@@ -20,22 +20,22 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Check for Git and install if needed
 if command -v git >/dev/null 2>&1; then
-  echo "\n2. Git is installed!\n"
+  echo "\n####\n2. Git is installed!\n####\n"
 else
-  echo "\n2. Installing Git...\n"
+  echo "\n####\n2. Installing Git...\n####\n"
   brew install git
 fi
 
 # Install Oh-My-Zsh
 if [ -d "$HOME/.oh-my-zsh" ]; then
-  echo "\n3. Oh-My-Zsh is already installed!\n"
+  echo "\n####\n3. Oh-My-Zsh is installed!\n####\n"
 else
-  echo "\n3. Installing 'Oh-My-Zsh'...\n"
+  echo "\n####\n3. Installing 'Oh-My-Zsh'...\n####\n"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # Brew packages
-echo "\n4. Installing Brew packages...\n"
+echo "\n####\n4. Installing Brew packages...\n####\n"
 brew list | grep jetbrains-mono-nerd-font || brew install --cask font-jetbrains-mono-nerd-font
 brew list | grep tree || brew install tree 
 brew list | grep slack || brew install --cask slack
@@ -43,7 +43,7 @@ brew list | grep zen-browser || brew install --cask zen-browser
 # brew list | grep tree || brew install 
 
 # Setup Symlinks
-echo "\n5. Setting up dotfile symlinks...\n"
+echo "\n####\n5. Setting up symlinks...\n####\n"
 
 # List of dotfiles to link
 DOTFILES=(.vimrc .zshrc .gitconfig)
