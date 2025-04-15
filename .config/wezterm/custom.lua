@@ -4,7 +4,7 @@ local os = require 'os';
 local custom_config = {}
 
 -- Config Values
-local opacity = 0.75
+local opacity = 0.9
 local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 
 function custom_config.apply(config)
@@ -17,7 +17,7 @@ function custom_config.apply(config)
     config.font_size = 10.0
 
     -- Window
-    config.use_fancy_tab_bar = false
+    config.use_fancy_tab_bar = true
     config.tab_bar_at_bottom = true
     config.show_tab_index_in_tab_bar = false
     config.colors.tab_bar = {
@@ -62,7 +62,7 @@ function custom_config.apply(config)
     -- config.default_prog = { "C:\\Windows\\system32\\wsl.exe", "-d", "Arch" }
     config.default_prog = { "zsh" }
 
-    config.window_decorations = "RESIZE"
+    -- config.window_decorations = "RESIZE"
     config.window_background_opacity = opacity
     config.win32_system_backdrop = "Acrylic"
 

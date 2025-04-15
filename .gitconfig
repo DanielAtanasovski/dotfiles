@@ -1,0 +1,17 @@
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAz4B7vFJBWwzdTuHSxW6MT8dMBvfD4IwzXus6VhE199
+	email = git@danielatanasovski.com
+	name = Daniel Atanasovski
+[push]
+    autosetupremote = true
+    rebase = true
+[init]
+    defaultBranch = main
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"

@@ -1,14 +1,24 @@
 #!/bin/bash
-set -e
+set -euo pipefail
+
+#######
+# Run the appropriate script for the OS we're on
+
+if [[ "$(uname -o)" == "Darwin" ]]; then
+  echo "Running setup for Mac..."
+  ./scripts/mac-setup.sh
+fi 
+
+: '
 
 ## PREPARE ##
-# Get this script's directory
+# Get this script directory
 DOTFILES_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-# Get user's home directory
+# Get user home directory
 HOME_DIR="$( eval echo ~"$USER" )"
 
 ## SYMLINK ##
-# Only symlink files that don't already exist
+# Only symlink files that do not  already exist
 if [ ! -e "${HOME_DIR}/.vimrc" ]; then
   echo "Symlinking .vimrc..."
   ln -s "${DOTFILES_DIR}/.vimrc" "${HOME_DIR}/.vimrc"
@@ -54,7 +64,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   "${DOTFILES_DIR}"/setup/mac-install.sh
 fi
 
-# If Linux, determine distro and run install it's install script
+# If Linux, determine distro and run install script
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   if [ -f /etc/os-release ]; then
     # freedesktop.org and systemd
@@ -66,5 +76,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   fi
 fi
 
+'
 
 echo "Setup complete!"
